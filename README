@@ -2,6 +2,20 @@
 **********************************************************
 Author: Qawelesizwe Mlilo
 Email: qawemlilo@gmail.com
-Description: A customized swfupload
+Description: Customized Simple Demo
 **********************************************************
 */
+
+The story.
+I came across the SWFUpload plugin when I was working a project for a client who wanted to allow up to 300 image file uploads per user.
+
+What's Nice?
+  1. SWFUpload allows for multiple files uploads without refreshing the page.
+  2. SWFUpload fires severals events during the upload process that (the developer the events to update the UI and and handle errors).
+  3. It is fast.
+  4. Files start uploading as soon as the user has finished selecting files.
+  5. Its highly costomizable.
+
+
+  
+ 
