@@ -7,7 +7,6 @@
 <script type="text/javascript" src="js/fileprogress.js"></script>
 <script type="text/javascript" src="js/handlers.js"></script>
 <script type="text/javascript">
-
 (function (){
     var swfu;
 	
@@ -29,11 +28,12 @@
 
 				// Button settings
 				button_image_url: "images/TestImageNoText_65x29.png",
-				button_width: "100",
+				button_width: "105",
 				button_height: "30",
 				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
 				button_placeholder_id: "spanButtonPlaceHolder",
-				button_text: '<span class="theFont">Upload</span>',
+				button_text: '<span class="theFont">Upload Files</span>',
+				button_cursor : SWFUpload.CURSOR.HAND,
 				// The event handler functions are defined in handlers.js
 				file_queued_handler : fileQueued,
 				file_queue_error_handler : fileQueueError,
@@ -58,21 +58,22 @@
     </div>
   
     <div id="content">
-        <h2>Simple Demo</h2>
+        <h2>Customised Simple Demo</h2>
 	
 	    <form id="form1" action="index.php" method="post" enctype="multipart/form-data">
-	        <p>
-			    This page demonstrates a simple usage of SWFUpload.
-			</p>
+		
+			<div id="counterDiv"><span id="num_loaded">0</span> / <span id="num_total">0</span> Files Uploaded</div>
 			
 			<div class="flash" id="fsUploadProgress">
-			
+			    <a href="#cancelUpload"><img id="cancelUpload" src="images/cancel.png" /></a>
+			    <div id="progressBar">
+				    &nbsp;
+				</div>
 			</div>
 			
-			<div id="divStatus">
-			    0 Files Uploaded
+			<div id="statusDiv">
+                 &nbsp;
 			</div>
-			
 			<div>
 			    <span id="spanButtonPlaceHolder"></span>
 				<input type="button" value="Upload Files"id="undercover" />
