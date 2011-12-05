@@ -10,12 +10,13 @@ The story.
 I came across the SWFUpload plugin when I was working a project for a client who wanted to allow up to 300 image file uploads per user.
 
 What's Nice?
-  1. SWFUpload allows for multiple files uploads without refreshing the page.
-  2. SWFUpload fires severals events during the upload process that 
-     (the developer can use the events to update the UI and and handle errors).
-  3. It is fast.
-  4. Files start uploading as soon as the user has finished selecting them.
-  5. Its highly customisable.
+  1. The ability to select multiple files in the file browser dialog
+  2. SWFUpload allows for multiple file uploads without refreshing the page.
+  3. SWFUpload fires severals events during the upload process. 
+     (the developer can use the events to update the UI and handle errors).
+  4. It is fast.
+  5. Files start uploading as soon as the user has finished selecting them.
+  6. Its highly customisable.
 
 
   
