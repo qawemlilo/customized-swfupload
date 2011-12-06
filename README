@@ -2,7 +2,8 @@
 **********************************************************
 Author: Qawelesizwe Mlilo
 Email: qawemlilo@gmail.com
-Description: Customised Simple SWFUpload Demo
+Description: Customized Simple SWFUpload Demo
+Demo: 
 **********************************************************
 */
 
@@ -10,14 +11,25 @@ The story.
 I came across the SWFUpload plugin when I was working a project for a client who wanted to allow up to 300 image file uploads per user.
 
 What's Nice?
-  1. The ability to select multiple files in the file browser dialog
-  2. SWFUpload allows for multiple file uploads without refreshing the page.
-  3. SWFUpload fires severals events during the upload process. 
-     (the developer can use the events to update the UI and handle errors).
-  4. It is fast.
-  5. Files start uploading as soon as the user has finished selecting them.
-  6. Its highly customisable.
-
-
+  * The ability to select multiple files in the file browser dialog
+  * "Ajax style" multiple file uploads without refreshing the page.
+  * SWFUpload fires several events during the upload process. 
+    (the developer can use the events to update the UI and handle errors).
+  * It is fast.
+  * Its highly customizable.
   
- 
+What I didn't like
+  * The UI of the available demos is not a friendly one when dealing with a lot of files.
+  * Too much code for handling events
+  * File upload limit is reset whenever the user refreshes the page
+  * SWFUpload Object resets the file count everytime we open the browser file dialog box
+  
+What this demo does
+I have taken the simple demo and thrown away excess code(namely, fileprogress.js) and re-written the event handler functions.
+I have added the following features:
+  
+  * A progress bar that tracks the number of files uplaoded
+  * A counter for the number of files uploaded
+  * A status update for current file being uploaded
+  * JavaScript Cookie tracking that ensures the user does not exceed file upload limit
+  
