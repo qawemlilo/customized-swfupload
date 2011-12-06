@@ -186,15 +186,7 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 */
 function uploadSuccess(file, serverData) {
 	try {
-	    var progress;
-		
-		//FILEObject.uploadedFiles += 1;
-		
-		progress = Math.ceil((FILEObject.uploadedFiles / FILEObject.queuedFiles) * 100);
-		
-		FILEObject.printStatus(this.customSettings.loadedTotal, FILEObject.uploadedFiles);
 		FILEObject.printStatus(this.customSettings.statusTarget, "");
-		document.getElementById(this.customSettings.progressBar).style.width = progress + "%";
 	} catch (ex) {
 		this.debug(ex);
 	}
