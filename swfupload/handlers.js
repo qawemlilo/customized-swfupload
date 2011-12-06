@@ -31,10 +31,12 @@ var FILEObject = {
 	
 	//
     setTotalFiles: function (num) {
-        if (this.queuedFiles)
+        if (this.queuedFiles) {
 		    this.queuedFiles += num;
-		else
+		}
+		else {
 		    this.queuedFiles = num;
+		}
     }
 };
 
@@ -186,7 +188,7 @@ function uploadSuccess(file, serverData) {
 	try {
 	    var progress;
 		
-		FILEObject.uploadedFiles += 1;
+		//FILEObject.uploadedFiles += 1;
 		
 		progress = Math.ceil((FILEObject.uploadedFiles / FILEObject.queuedFiles) * 100);
 		
@@ -204,7 +206,16 @@ function uploadSuccess(file, serverData) {
 */
 function uploadComplete(file) {
 	try {
-	    var stats = this.getStats();
+	    var stats = this.getStats(),  progress;
+		
+		FILEObject.uploadedFiles += 1;
+		
+		progress = Math.ceil((FILEObject.uploadedFiles / FILEObject.queuedFiles) * 100);
+		
+		FILEObject.printStatus(this.customSettings.loadedTotal, FILEObject.uploadedFiles);
+		FILEObject.printStatus(this.customSettings.statusTarget, "");
+		
+		document.getElementById(this.customSettings.progressBar).style.width = progress + "%";	
 		
 		if (stats.files_queued === 0) {
 		    document.getElementById(this.customSettings.cancelButtonId).disabled = true;
