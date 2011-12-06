@@ -216,5 +216,15 @@ function uploadComplete(file) {
 
 // This event comes from the Queue Plugin
 function queueComplete(numFilesUploaded) {
+    var total_uploads = FILEObject.uploadedFiles, mycookie;
+	
+	mycookie = getCookie("filecookie");
+	
+	if (mycookie !== null) { 
+	    total_uploads += mycookie;
+	}
+	
+	setCookie("filecookie", total_uploads);
+	
 	document.getElementById(this.customSettings.statusTarget).innerHTML = "File upload complete.";
 }

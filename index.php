@@ -5,10 +5,11 @@
 <link href="css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="swfupload/swfupload.js"></script>
 <script type="text/javascript" src="swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="swfupload/cookie.js"></script>
 <script type="text/javascript" src="swfupload/handlers.js"></script>
 <script type="text/javascript">
 (function (){
-    var swfu;
+    var swfu, limit, mycookie = getCookie("filecookie");
 	
 	window.onload = function () {
 	    var settings = {
@@ -50,6 +51,17 @@
 				upload_complete_handler : uploadComplete,
 				queue_complete_handler : queueComplete	// Queue plugin event
 			};
+			
+		if (mycookie !== null) {
+			if (mycookie >= settings.file_upload_limit) {
+				alert("You have reached your upload limit.");
+				return;
+			}
+			else {
+			    limit = settings.file_upload_limit - mycookie;
+			    settings.file_upload_limit = limit;
+			}
+		}
 
 		swfu = new SWFUpload(settings);
 	};
