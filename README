@@ -10,7 +10,7 @@ Demo: http://qawemlilo.github.com/customized-swfupload/
 SWFUpload
 I came across the SWFUpload plugin when I was working a project for a client who wanted to allow up to 300 image file uploads per user.
 
-What's Nice?
+What I liked
   * The ability to select multiple files in the file browser dialog
   * "Ajax style" multiple file uploads without refreshing the page.
   * SWFUpload fires several events during the upload process. 
@@ -32,4 +32,5 @@ I have added the following features:
   * A counter for the number of files uploaded
   * A status update for current file being uploaded
   * JavaScript Cookie tracking that ensures the user does not exceed file upload limit
-  
+
+Go ahead and try out the demo: http://qawemlilo.github.com/customized-swfupload/ 
