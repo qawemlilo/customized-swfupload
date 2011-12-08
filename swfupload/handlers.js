@@ -37,6 +37,13 @@ var FILEObject = {
 		else {
 		    this.queuedFiles = num;
 		}
+    },
+	
+    setUploadedFiles: function (num) {
+        if (this.uploadedFiles)
+		    this.uploadedFiles += num;
+		else
+		    this.uploadedFiles = num;
     }
 };
 
@@ -46,6 +53,13 @@ var FILEObject = {
 */
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
+		var mycookie = getCookie("filecookie");
+		
+	    if (mycookie !== null && !FILEObject.queuedFiles) {
+            mycookie = parseInt(mycookie);	
+		    FILEObject.setTotalFiles(mycookie);
+			FILEObject.setUploadedFiles(mycookie);
+	    }
 	    
 		if (numFilesSelected > 0) {
 		    document.getElementById(this.customSettings.progressContainer).className += " bg_orange"; //highlight background
@@ -220,13 +234,12 @@ function uploadComplete(file) {
 
 // This event comes from the Queue Plugin
 function queueComplete(numFilesUploaded) {
-    var total_uploads = FILEObject.uploadedFiles, mycookie;
+    var total_uploads = parseInt(numFilesUploaded), mycookie = getCookie("filecookie");
 	
-	mycookie = getCookie("filecookie");
-	
-	if (mycookie !== null) { 
-	    total_uploads += mycookie;
+	if (mycookie !== null) {	
+	    total_uploads += parseInt(mycookie);
 	}
+	
 	
 	setCookie("filecookie", total_uploads);
 	
