@@ -31,12 +31,10 @@ var FILEObject = {
 	
 	//
     setTotalFiles: function (num) {
-        if (this.queuedFiles) {
+        if (this.queuedFiles)
 		    this.queuedFiles += num;
-		}
-		else {
+		else
 		    this.queuedFiles = num;
-		}
     },
 	
     setUploadedFiles: function (num) {
@@ -53,7 +51,7 @@ var FILEObject = {
 */
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
-		var mycookie = getCookie("filecookie");
+	    var mycookie = getCookie("filecookie");
 		
 	    if (mycookie !== null && !FILEObject.queuedFiles) {
             mycookie = parseInt(mycookie);	
@@ -212,16 +210,14 @@ function uploadSuccess(file, serverData) {
 */
 function uploadComplete(file) {
 	try {
-	    var stats = this.getStats(),  progress;
+	    var stats = this.getStats(), progress;
 		
 		FILEObject.uploadedFiles += 1;
 		
 		progress = Math.ceil((FILEObject.uploadedFiles / FILEObject.queuedFiles) * 100);
 		
-		FILEObject.printStatus(this.customSettings.loadedTotal, FILEObject.uploadedFiles);
-		FILEObject.printStatus(this.customSettings.statusTarget, "");
-		
-		document.getElementById(this.customSettings.progressBar).style.width = progress + "%";	
+		FILEObject.printStatus(this.customSettings.loadedTotal, FILEObject.uploadedFiles);		
+		document.getElementById(this.customSettings.progressBar).style.width = progress + "%";
 		
 		if (stats.files_queued === 0) {
 		    document.getElementById(this.customSettings.cancelButtonId).disabled = true;
@@ -239,7 +235,8 @@ function queueComplete(numFilesUploaded) {
 	if (mycookie !== null) {	
 	    total_uploads += parseInt(mycookie);
 	}
-
+	
+	
 	setCookie("filecookie", total_uploads);
 	
 	document.getElementById(this.customSettings.statusTarget).innerHTML = "File upload complete.";
