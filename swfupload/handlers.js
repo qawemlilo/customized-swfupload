@@ -239,8 +239,7 @@ function queueComplete(numFilesUploaded) {
 	if (mycookie !== null) {	
 	    total_uploads += parseInt(mycookie);
 	}
-	
-	
+
 	setCookie("filecookie", total_uploads);
 	
 	document.getElementById(this.customSettings.statusTarget).innerHTML = "File upload complete.";
