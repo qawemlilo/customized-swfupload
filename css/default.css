@@ -270,6 +270,15 @@ div.flash {
   overflow: hidden; 
 }
 
+#cancelUpload {
+  position: absolute;
+  margin-left: 365px;
+  margin-top: 2px;
+  z-index: 1000;
+  display: none;
+  
+}
+
 #counterDiv {
   margin-top: 5px;
 }

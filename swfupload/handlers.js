@@ -1,23 +1,58 @@
+///////////////////////////////////////////////////////////////////////// 
+//      getCookie();  setCookie();  deleteCookie();                   
+/////////////////// ////////////////////////////////////////////////////
+function getCookie (name) {
+	var start = document.cookie.indexOf(name + "="), len, end;
+	
+	len = start + name.length + 1;
+	
+	if ((!start) && ( name !== document.cookie.substring(0, name.length))) {
+		return null;
+	}
+	if (start === -1) {
+	    return null;
+	}
+	
+	end = document.cookie.indexOf(';', len);
+	
+	if (end === -1) {
+	    end = document.cookie.length;
+	}
+	
+	return unescape(document.cookie.substring(len, end));
+}
+
+function deleteCookie(name, path, domain) {
+	if (getCookie(name)) { 
+	    document.cookie = name + "=" + ((path) ? ";path=" + path : "") + ((domain) ? ";domain=" + domain : "") + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+	}
+}
+
+function setCookie(name, value, expires, path, domain, secure) {
+	var today = new Date(), expires_date;
+	today.setTime( today.getTime() );
+	
+	if (expires) {
+		expires = expires * 1000 * 60 * 60 * 24;
+	}
+	
+	expires_date = new Date( today.getTime() + (expires) );
+	
+	document.cookie = name+'='+escape(value) +
+	( ( expires ) ? ';expires='+expires_date.toGMTString() : '') + //expires.toGMTString()
+	( ( path ) ? ';path=' + path : '' ) +
+	( ( domain ) ? ';domain=' + domain : '' ) +
+	( ( secure ) ? ';secure' : '' );
+}
+
 /* 
-**********************
+****************************************************************************************************************
    Q's notes
    Event Handlers
-********************** 
-*/
-
-
-/*
-  If jQuery is available we would like to use it for animations
-
-if (typeof jQuery === 'function') {
-    jQuery.noConflict();
-}
-*/
-
-
-/*
-  This is the object that keeps tracks of the Upload process. 
-  The problem with SWFUpload object is that it resets the file count everytime we open the file dialog box
+   
+   This is the object that keeps tracks of the Upload process. 
+   The problem with SWFUpload object is that it resets the file count everytime we open the file dialog box
+****************************************************************************************************************
 */
 var FILEObject = {
 
@@ -31,17 +66,21 @@ var FILEObject = {
 	
 	//
     setTotalFiles: function (num) {
-        if (this.queuedFiles)
+        if (this.queuedFiles) {
 		    this.queuedFiles += num;
-		else
+		}
+		else {
 		    this.queuedFiles = num;
+		}
     },
 	
     setUploadedFiles: function (num) {
-        if (this.uploadedFiles)
+        if (this.uploadedFiles) {
 		    this.uploadedFiles += num;
-		else
+		}
+		else {
 		    this.uploadedFiles = num;
+		}
     }
 };
 
@@ -54,7 +93,7 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	    var mycookie = getCookie("filecookie");
 		
 	    if (mycookie !== null && !FILEObject.queuedFiles) {
-            mycookie = parseInt(mycookie);	
+            mycookie = parseInt(mycookie, 10);	
 		    FILEObject.setTotalFiles(mycookie);
 			FILEObject.setUploadedFiles(mycookie);
 	    }
@@ -230,14 +269,13 @@ function uploadComplete(file) {
 
 // This event comes from the Queue Plugin
 function queueComplete(numFilesUploaded) {
-    var total_uploads = parseInt(numFilesUploaded), mycookie = getCookie("filecookie");
+    var total_uploads = parseInt(numFilesUploaded, 10), mycookie = getCookie("filecookie");
 	
 	if (mycookie !== null) {	
-	    total_uploads += parseInt(mycookie);
+	    total_uploads += parseInt(mycookie, 10);
 	}
 	
-	
-	setCookie("filecookie", total_uploads);
+	setCookie("filecookie",total_uploads);
 	
 	document.getElementById(this.customSettings.statusTarget).innerHTML = "File upload complete.";
 }
